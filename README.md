@@ -21,12 +21,14 @@ Relational structure design and foreign key management.
         2. List the different eyewear models sold by an employee during a year.
 
         3. List the different suppliers that have sold eyewear successfully through the store.
+           
 * **Ex 2 - Pizzeria:** A delivery order system. Features management of provinces/cities, product categories (pizzas, burgers, drinks), and logistics for stores and employees.
-* **Queries included:
+   * **Queries included:
+
         1. List how many "Drinks" have been sold in a specific locality.
 
         2. List how many orders a specific employee (repartidor/driver) has delivered.
-
+        
 ### 🚀 Level 2
 Complex system design with multiple cross-relationships.
 * **Ex 1 - YouTube (Reduced Version):** Modeling of a video platform. Includes user management, channels, subscriptions, playlists, comments, and a like/dislike system with time-stamped logs.
