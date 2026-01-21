@@ -31,7 +31,7 @@ CREATE TABLE customers
     customer_telephone       INT          NOT NULL,
     customer_e_mail          VARCHAR(255) NOT NULL,
     customer_registration    DATE         NOT NULL,
-    customer_who_recommended INT      L,
+    customer_who_recommended INT      ,
     CONSTRAINT customer_e_mail
         UNIQUE (customer_e_mail),
     CONSTRAINT fk_sale_customer_who_recommended_id
