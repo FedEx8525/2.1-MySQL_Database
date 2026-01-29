@@ -24,9 +24,9 @@ CREATE TABLE customers (
     name        VARCHAR(60)           NOT NULL,
     surname     VARCHAR(60)           NOT NULL,
     address     VARCHAR(100)          NOT NULL,
-    zip_code    INT                   NOT NULL,
+    zip_code    VARCHAR(60)           NOT NULL,
     city_id     INT                   NOT NULL,
-    telephone   INT                   NOT NULL,
+    telephone   VARCHAR(60)           NOT NULL,
     CONSTRAINT fk_customers_city_id
         FOREIGN KEY (city_id) REFERENCES cities(city_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -44,7 +44,7 @@ CREATE TABLE products (
     product_name VARCHAR(60)                         NOT NULL,
     description  TEXT                                    NULL,
     image_url    VARCHAR(255)                            NULL,
-    price        DECIMAL(10,2)                       NOT NULL,
+    price        DOUBLE                              NOT NULL,
     category_id  INT                                     NULL,
     CONSTRAINT fk_products_category_id
         FOREIGN KEY (category_id) REFERENCES categories(category_id)
@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS stores;
 CREATE TABLE stores (
     store_id INT AUTO_INCREMENT PRIMARY KEY,
     address  VARCHAR(100)          NOT NULL,
-    zip_code INT                   NOT NULL,
+    zip_code VARCHAR(60)           NOT NULL,
     city_id  INT                   NOT NULL,
     CONSTRAINT fk_stores_city_id
         FOREIGN KEY (city_id) REFERENCES cities(city_id)
@@ -66,7 +66,7 @@ CREATE TABLE employees (
     name         VARCHAR(60)             NOT NULL,
     surname      VARCHAR(60)             NOT NULL,
     nif          VARCHAR(60)             NOT NULL,
-    telephone    INT                     NOT NULL,
+    telephone    VARCHAR(60)             NOT NULL,
     employee_job ENUM('Chef', 'Dealer')  NOT NULL,
     store_id     INT                     NOT NULL,
     CONSTRAINT fk_employees_store_id
@@ -78,7 +78,7 @@ CREATE TABLE orders (
     order_id           INT AUTO_INCREMENT      PRIMARY KEY,
     order_date_hour    DATETIME                   NOT NULL,
     order_type         ENUM('Delivery', 'Pickup') NOT NULL,
-    total_price        INT                        NOT NULL,
+    total_price        DOUBLE                        NOT NULL,
     delivery_date_hour DATETIME                   NOT NULL,
     employee_id        INT                            NULL,
     store_id           INT                        NOT NULL,
