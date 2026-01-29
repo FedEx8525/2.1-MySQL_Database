@@ -50,9 +50,15 @@ CREATE TABLE suppliers
 (
     supplier_id          INT AUTO_INCREMENT PRIMARY KEY,
     supplier_name        VARCHAR(60) NOT NULL,
-    supplier_address     VARCHAR(60) NOT NULL,
-    supplier_telephone   VARCHAR(60) NOT NULL,
-    supplier_fax         VARCHAR(60) NULL,
+    supplier_street      VARCHAR(60) NOT NULL,
+    supplier_number      VARCHAR(10) NOT NULL,
+    supplier_floor       VARCHAR(8) NOT NULL,
+    supplier_door        VARCHAR(8) NOT NULL,
+    supplier_city        VARCHAR(60) NOT NULL,
+    supplier_zipcode     VARCHAR(15) NOT NULL,
+    supplier_country     VARCHAR(60) NOT NULL,
+    supplier_telephone   VARCHAR(15) NOT NULL,
+    supplier_fax         VARCHAR(15)     NULL,
     supplier_nif         VARCHAR(60) NOT NULL,
     CONSTRAINT supplier_nif
         UNIQUE (supplier_nif)
