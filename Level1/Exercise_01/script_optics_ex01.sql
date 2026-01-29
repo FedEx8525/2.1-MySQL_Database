@@ -64,20 +64,30 @@ CREATE TABLE suppliers
         UNIQUE (supplier_nif)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+DROP TABLE IF EXISTS brands;
+CREATE TABLE brands
+(
+    brand_id              INT AUTO_INCREMENT PRIMARY KEY,
+    name                  VARCHAR(60)                           NOT NULL,
+    supplier_id           INT                                   NOT NULL,
+    CONSTRAINT fk_brand_supplier_id
+        FOREIGN KEY (supplier_id) REFERENCES suppliers (supplier_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 DROP TABLE IF EXISTS glasses;
 CREATE TABLE glasses
 (
     glass_id              INT AUTO_INCREMENT PRIMARY KEY,
-    brand                 VARCHAR(60)                           NOT NULL,
+    brand_id              INT                                   NOT NULL,
     mount_type            ENUM ('floating', 'plastic', 'metal') NOT NULL,
     mount_color           VARCHAR(20)                           NOT NULL,
     crystal_color         VARCHAR(20)                           NOT NULL,
     price                 DOUBLE                                NOT NULL,
     right_lens_graduation DOUBLE                                NOT NULL,
     left_lens_graduation  DOUBLE                                NOT NULL,
-    supplier_id           INT                                   NOT NULL,
-    CONSTRAINT fk_sell_supplier_id
-        FOREIGN KEY (supplier_id) REFERENCES suppliers (supplier_id)
+    CONSTRAINT fk_sell_brand_id
+        FOREIGN KEY (brand_id) REFERENCES brands (brand_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;
