@@ -8,11 +8,11 @@ TRUNCATE TABLE customers;
 TRUNCATE TABLE employees;
 SET FOREIGN_KEY_CHECKS = 1;
 
-    INSERT INTO suppliers (supplier_name, supplier_address, supplier_telephone, supplier_fax, supplier_nif)
+    INSERT INTO suppliers (supplier_name, supplier_street, supplier_number, supplier_floor, supplier_door, supplier_city, supplier_zipcode, supplier_country, supplier_telephone, supplier_fax, supplier_nif)
     VALUES
-        ('Luxottica', 'Calle de Luxotica, 105, Sants-Montjuïc, 08029, Barcelona', 900111222, NULL, 'NIF123'),
-        ('Marcolín', 'Calle de Marcolín, 54, Ciudat Vella, 08002, Barcelona', 900444555, 900123123, 'NIF436'),
-        ('Beautaste', 'Calle Beautaste, 347, Horta-Guinardó, 08030, Barcelona', 900467764, NULL, 'NIF987');
+        ('Luxottica', 'Calle de Luxotica', '105', NULL, NULL, 'Barcelona', '08029', 'Spain', '900111222', NULL, 'NIF123'),
+        ('Marcolín', 'Calle de Marcolín', '54', '2', '1', 'Barcelona','08002', 'Spain', '900444555', '900123123', 'NIF436'),
+        ('Beautaste', 'Calle Beautaste', '347D', '4', 'B', 'Barcelona', '08030', 'Spain', '900467764', NULL, 'NIF987');
 
     INSERT INTO customers (customer_name, customer_address, customer_telephone, customer_e_mail, customer_registration, customer_who_recommended)
     VALUES
@@ -33,18 +33,33 @@ SET FOREIGN_KEY_CHECKS = 1;
         ('Javier García Fernández'),
         ('Elena Sánchez Castro');
 
-    INSERT INTO glasses (brand, mount_type, mount_color, crystal_color, price, right_lens_graduation, left_lens_graduation, supplier_id)
+    INSERT INTO brands (brand_id, name, supplier_id)
     VALUES
-        ('Ray-Ban', 'metal', 'gold', 'green G-15', 145.00, -1.50, -1.25, 1),
-        ('Oakley', 'plastic', 'black mate', 'prizm sapphire', 160.00, +0.00, +0.00, 2),
-        ('Silhouette', 'floating', 'silver', 'transparent', 218.99, -2.25, -2.50, 3),
-        ('Prada', 'metal', 'pink gold', 'transparent', 240.00, -3.00, -3.25, 2),
-        ('Vogue', 'metal', 'copper', 'pastel pink', 85.00, +0.50, +0.50, 3),
-        ('Carrera', 'plastic', 'carey', 'brown', 95.00, +1.25, +1.00, 1),
-        ('Persol', 'plastic', 'cobalt blue', 'gradient gray', 184.90, -0.75, - 0.75, 1),
-        ('Gucci', 'plastic', 'glossy black', 'transparent', 290.00, +2.00, +2.00, 1),
-        ('Lindberg', 'floating', 'titanium gray', 'transparent', 450.00, -1.00, -1.50, 3),
-        ('Arnette', 'plastic', 'blue/withe', 'dark gray', 75.00, -1.00, -0.75, 2 );
+        (1, 'Ray-Ban', 1),
+        (2, 'Oakley', 2),
+        (3, 'Silhouette', 3),
+        (4, 'Prada', 2),
+        (5, 'Vogue', 3),
+        (6, 'Carrera', 1),
+        (7, 'Persol', 1),
+        (8, 'Gucci', 1),
+        (9, 'Lindberg', 3),
+        (10, 'Arnette', 2 );
+
+  
+
+    INSERT INTO glasses (brand_id, mount_type, mount_color, crystal_color, price, right_lens_graduation, left_lens_graduation)
+    VALUES
+        (1, 'metal', 'gold', 'green G-15', 145.00, -1.50, -1.25),
+        (2, 'plastic', 'black mate', 'prizm sapphire', 160.00, +0.00, +0.00),
+        (3, 'floating', 'silver', 'transparent', 218.99, -2.25, -2.50),
+        (4, 'metal', 'pink gold', 'transparent', 240.00, -3.00, -3.25),
+        (5, 'metal', 'copper', 'pastel pink', 85.00, +0.50, +0.50),
+        (6, 'plastic', 'carey', 'brown', 95.00, +1.25, +1.00),
+        (7, 'plastic', 'cobalt blue', 'gradient gray', 184.90, -0.75, - 0.75),
+        (8, 'plastic', 'glossy black', 'transparent', 290.00, +2.00, +2.00),
+        (9, 'floating', 'titanium gray', 'transparent', 450.00, -1.00, -1.50),
+        (10, 'plastic', 'blue/withe', 'dark gray', 75.00, -1.00, -0.75);
 
     INSERT INTO  sales (sale_date, customer_id, employee_id, glass_id, quantity, total_price)
     VALUES
