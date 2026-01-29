@@ -12,7 +12,7 @@ CREATE TABLE sales
     employee_id INT   NOT NULL,
     glass_id    INT   NOT NULL,
     quantity    INT   NOT NULL,
-    total_price FLOAT NOT NULL,
+    total_price DOUBLE NOT NULL,
     CONSTRAINT fk_sale_customer_id
         FOREIGN KEY (customer_id) REFERENCES customers (customer_id),
     CONSTRAINT fk_sale_employee_id
@@ -28,7 +28,7 @@ CREATE TABLE customers
     customer_id              INT AUTO_INCREMENT PRIMARY KEY,
     customer_name            VARCHAR(60)  NOT NULL,
     customer_address         VARCHAR(60)  NOT NULL,
-    customer_telephone       INT          NOT NULL,
+    customer_telephone       VARCHAR(60)  NOT NULL,
     customer_e_mail          VARCHAR(255) NOT NULL,
     customer_registration    DATE         NOT NULL,
     customer_who_recommended INT      ,
@@ -51,8 +51,8 @@ CREATE TABLE suppliers
     supplier_id          INT AUTO_INCREMENT PRIMARY KEY,
     supplier_name        VARCHAR(60) NOT NULL,
     supplier_address     VARCHAR(60) NOT NULL,
-    supplier_telephone   INT         NOT NULL,
-    supplier_fax         INT         NULL,
+    supplier_telephone   VARCHAR(60) NOT NULL,
+    supplier_fax         VARCHAR(60) NULL,
     supplier_nif         VARCHAR(60) NOT NULL,
     CONSTRAINT supplier_nif
         UNIQUE (supplier_nif)
@@ -66,9 +66,9 @@ CREATE TABLE glasses
     mount_type            ENUM ('floating', 'plastic', 'metal') NOT NULL,
     mount_color           VARCHAR(20)                           NOT NULL,
     crystal_color         VARCHAR(20)                           NOT NULL,
-    price                 FLOAT                                 NOT NULL,
-    right_lens_graduation FLOAT                                 NOT NULL,
-    left_lens_graduation  FLOAT                                 NOT NULL,
+    price                 DOUBLE                                NOT NULL,
+    right_lens_graduation DOUBLE                                NOT NULL,
+    left_lens_graduation  DOUBLE                                NOT NULL,
     supplier_id           INT                                   NOT NULL,
     CONSTRAINT fk_sell_supplier_id
         FOREIGN KEY (supplier_id) REFERENCES suppliers (supplier_id)
